@@ -17,6 +17,9 @@ data/*.pdf
 index/*.npy
 index/*.json
 
+# Logs
+*.log
+
 # OS
 .DS_Store
 Thumbs.db
