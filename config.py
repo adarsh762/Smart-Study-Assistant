@@ -16,9 +16,11 @@ ENV = os.getenv("ENV", "development").lower()
 IS_PRODUCTION = ENV == "production"
 
 # ── Paths ──
+# On Railway/Render, set DATA_DIR and INDEX_DIR to a persistent volume path
+# e.g. DATA_DIR=/data/pdfs  INDEX_DIR=/data/index
 BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = str(BASE_DIR / "data")
-INDEX_DIR = str(BASE_DIR / "index")
+DATA_DIR = os.getenv("DATA_DIR", str(BASE_DIR / "data"))
+INDEX_DIR = os.getenv("INDEX_DIR", str(BASE_DIR / "index"))
 
 # ── API Keys (fail-fast validation) ──
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
