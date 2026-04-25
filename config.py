@@ -58,7 +58,8 @@ ALLOWED_ORIGINS: list = os.getenv(
 ).split(",")
 
 # ── Server ──
-HOST: str = os.getenv("HOST", "127.0.0.1")
+# Railway/Render require 0.0.0.0; local dev uses 127.0.0.1
+HOST: str = os.getenv("HOST", "0.0.0.0" if IS_PRODUCTION else "127.0.0.1")
 PORT: int = int(os.getenv("PORT", "7860"))
 
 # ── Ensure directories exist ──
